@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diabetes Patient's Readmission Prediction</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .container {
+        max-width: 500px; /* Adjust the width as needed */
+        margin: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+      }
+      .disclaimer {
+        margin-top: 20px;
+        font-size: 0.85em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="my-4">Diabetes Patient's Readmission Prediction</h2>
+
+      <!-- Check if prediction is available -->
+      {% if prediction is defined %}
+      <div class="alert alert-info">Prediction: {{ prediction }}</div>
+      {% endif %}
+      <!-- Display error message if present -->
+      {% if error is defined %}
+      <div class="alert alert-danger text-center">{{ error }}</div>
+      {% endif %}
+
+      <form action="/predict" method="post">
+        <div class="form-group">
+          <label for="number_inpatient">Number of Times as Inpatient</label>
+          <input
+            type="number"
+            class="form-control"
+            id="number_inpatient"
+            name="number_inpatient"
+            value="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="number_emergency">Number Emergency Cases</label>
+          <input
+            type="number"
+            class="form-control"
+            id="number_emergency"
+            name="number_emergency"
+            value="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="number_emergency">Number of Diagnosis</label>
+          <input
+            type="number"
+            class="form-control"
+            id="number_diagnosis"
+            name="number_diagnosis"
+            value="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="number_emergency">Number of times as Outpatient</label>
+          <input
+            type="number"
+            class="form-control"
+            id="number_outpatient"
+            name="number_outpatient"
+            value="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="number_emergency">Number of Dig-1-428</label>
+          <input
+            type="number"
+            class="form-control"
+            id="nummer_dig_1_428"
+            name="number_dig_1_428"
+            value="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="number_emergency">Number of Diabetes Medication</label>
+          <input
+            type="number"
+            class="form-control"
+            id="number_diabetesMed_Yes"
+            name="number_diabetesMed_Yes"
+            value="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="number_emergency">Number of Medication</label>
+          <input
+            type="number"
+            class="form-control"
+            id="number_num_medications"
+            name="number_num_medications"
+            value="0"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="number_emergency">Number of Times in Hospital</label>
+          <input
+            type="number"
+            class="form-control"
+            id="number_time_in_hospital"
+            name="number_time_in_hospital"
+            value="0"
+            required
+          />
+        </div>
+
+        <div class="text-center">
+          <button type="submit" class="btn-lg btn-primary">Predict</button>
+        </div>
+      </form>
+      <div class="disclaimer">
+        <p>
+          <strong class="text-danger">Please Note:</strong>This prediction is
+          not a medical diagnosis and should not be taken as such. Always
+          consult with a healthcare professional for medical advice.
+        </p>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>
